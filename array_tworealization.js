@@ -94,4 +94,24 @@ document.writeln(`<p> Function #6 - Count the number of numbers greater than 0:$
 document.writeln(`<p> Function #8 - Replace bad words with asterisks: ${replaceBadWords("Are you fucking kidding?")}</p>`);
 
 console.log(replaceBadWords("Are you fucking kidding?"));
+ //function 9
+ function divideByThree(word){
+     const result =word.match(/.{1,3}/g);
+     return result;
+ }
  
+document.writeln(`<p> Function #9 - Breaks each word into conditional syllables of 3 letters: ${divideByThree('Commander')}</p>`);
+/*//function 10
+
+    function generateCombinations(word) {
+        list_of_strings = new Array();
+        for(i=0;i<word.length;i++) {
+            for(j=i+1;j<word.length+1;j++) {
+                list_of_strings.push(word.slice(i, j));
+            }
+        }
+        return list_of_strings;
+     }
+     document.writeln(`<p> Function #10 - All possible permutations  : ${generateCombinations("man")}</p>`);
+
+*/
