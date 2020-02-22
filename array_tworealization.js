@@ -11,8 +11,8 @@ function getRandomArray(length, min, max){
 document.writeln(`<p> Function #1 - Gets random numbers:${getRandomArray(15, 1, 100)}</p>`);
 //function 2
 function getModa(...numbers){
-    
-        return ((numbers.sort((a, b) =>
+
+        return ((numbers.filter(number => !(isNaN(parseInt(number)))).sort((a, b) =>
         (numbers.filter(v => v === a).length) - (numbers.filter(v => v === b).length))
       ).pop())
       }
@@ -34,11 +34,11 @@ function getAverage(...numbers){
 document.writeln(`<p> Function #3 - counts arithmetic mean  :${getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
 
     //function 4
-    function getMedian (...numbers) {
+   function getMedian (...numbers) {
         let median = 0;
-         numbers.sort((a, b) => a -b);
+        numbers=  numbers.sort((a, b) => a -b);
         let properIndex = 0;
-        if (numbers.length % 2 !== 0) {
+        if (numbers =>!(isNaN(parseInt( numbers))).length % 2 !== 0) {
             properIndex = Math.floor(numbers.length / 2);
             median = numbers[properIndex];
         } else {
@@ -48,7 +48,7 @@ document.writeln(`<p> Function #3 - counts arithmetic mean  :${getAverage(6, 2, 
         return median;
     }
 
-    document.writeln(`<p> Function #4 - Сounts the median of arguments :${getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
+    document.writeln(`<p> Function #4 - Сounts the median of arguments :${getMedian(6.8, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
 
 
 //function 5
@@ -91,10 +91,11 @@ document.writeln(`<p> Function #8 - Replace bad words with asterisks: ${replaceB
  
 //function 9
  function divideByThree(word){
-     const result =word.match(/.{1,3}/g);
+      word = word.toLowerCase().trim();
+         const result = word.match(/.{1,3}/g);
      return result;
  }
- 
+
 document.writeln(`<p> Function #9 - Breaks each word into conditional syllables of 3 letters: ${divideByThree('Commander')}</p>`);
 /*//function 10
 
