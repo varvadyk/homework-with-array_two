@@ -9,46 +9,52 @@ function getRandomArray(length, min, max){
 
 
 document.writeln(`<p> Function #1 - Gets random numbers:${getRandomArray(15, 1, 100)}</p>`);
+//filter array
+const getEntireNumbers = (numbers) => {
+    return numbers.filter(element => element === Math.trunc(element));
+    }
 //function 2
 function getModa(...numbers){
-
-        return ((numbers.filter(number => !(isNaN(parseInt(number)))).sort((a, b) =>
-        (numbers.filter(v => v === a).length) - (numbers.filter(v => v === b).length))
-      ).pop())
+    const dataModa = getEntireNumbers(numbers);
+        return dataModa.sort((a, b) =>
+        (dataModa.filter(v => v === a).length) - (dataModa.filter(v => v === b).length)).pop()
       }
  
       document.writeln(`<p> Function #2 - Gets moda  numbers:${getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
 
 
-//function3
+//function 3
 function getAverage(...numbers){
-    const result = numbers.reduce((accumulator, element) => {
+    const dataAverage = getEntireNumbers(numbers);
+    const result = dataAverage.reduce((accumulator, element) => {
         let suma = 0;    
         if (Number.isInteger(element)) {
                 suma += element;
             }
             return suma + accumulator;
         }, 0 );
-        return result / numbers.length;
+        return result / dataAverage.length;
     } 
 document.writeln(`<p> Function #3 - counts arithmetic mean  :${getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
 
     //function 4
-   function getMedian (...numbers) {
+
+    function getMedian (...numbers) {
+        const dataMedian = getEntireNumbers(numbers);
         let median = 0;
-        numbers=  numbers.sort((a, b) => a -b);
+        dataMedian.sort((a, b) => a -b);
         let properIndex = 0;
-        if (numbers =>!(isNaN(parseInt( numbers))).length % 2 !== 0) {
-            properIndex = Math.floor(numbers.length / 2);
-            median = numbers[properIndex];
+        if (dataMedian.length % 2 !== 0) {
+            properIndex = Math.floor(dataMedian.length / 2);
+            median = dataMedian[properIndex];
         } else {
-            properIndex = numbers.length / 2;
-            median = (numbers[properIndex - 1] + numbers[properIndex]) / 2;
+            properIndex = dataMedian.length / 2;
+            median = (dataMedian[properIndex - 1] + dataMedian[properIndex]) / 2;
             }
         return median;
     }
 
-    document.writeln(`<p> Function #4 - Сounts the median of arguments :${getMedian(6.8, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
+    document.writeln(`<p> Function #4 - Сounts the median of arguments :${getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2)}</p>`);
 
 
 //function 5
